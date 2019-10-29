@@ -1,0 +1,24 @@
+
+<html>
+<head>
+	<title>The Gossip Project</title>
+</head>
+<body>
+	<h1>Voici les gossips du moments : </h1>
+
+	<% @gossips.each do |gossip| %>
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title"><%= gossip.title %></h5>
+					<p class="card-text">par : <%= gossip.user.first_name %></p>
+					<a href=<%= "/gossip/" + gossip.id.to_s %> class="btn btn-primary"><%= "Gossip n°" + gossip.id.to_s %></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+class MessageDelivering < ApplicationRecord
+end

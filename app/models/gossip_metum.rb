@@ -1,0 +1,2 @@
+class GossipMetum < ApplicationRecord
+end

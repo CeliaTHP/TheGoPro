@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header font-weight-bold">
+    Author #<%=params[:id]%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= User.find(params[:id]).first_name%> <%= User.find(params[:id]).last_name%></h5>
+    <div class="card-text">
+    	<p>Age : <%= User.find(params[:id]).age%></p>
+		<p>City : <%= User.find(params[:id]).city.name%></p>
+		<p>ZIP Code : <%= User.find(params[:id]).city.zip_code%></p>
+	        <p>email address : <%= User.find(params[:id]).email%></p>
+		<p>Member since : <%= User.find(params[:id]).created_at.to_date%></p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header mb-3">
+    <p><%= User.find(params[:id]).first_name%> a tout balancé :</p>
+    <%end%>
+   </div>
+<div class="card-deck">
+<%Gossip.where(user_id:params[:id]).each do |gossip|%>
+<div class="col-sm-4 mb-3">
+<div class="card">
+  <div class="card-header">
+    Gossip #<%=gossip.id%>
+  </div>
+  <div class="card-body align-center">
+    <blockquote class="blockquote mb-0">
+      <p><%=gossip.title%></p>
+      <footer class="blockquote-footer">
+      <div class="row justify-content-between align-self-center mx-3">
+      	<p><%=User.find(gossip.user_id).first_name%> <%=User.find(gossip.user_id).last_name%></p>
+      	<a class="btn btn-dark" <%= link_to "Voir le Gossip", gossip_id_path(gossip.id)%></a>
+      </div>
+      </footer>
+    </blockquote>
+  </div>
+</div>
+</div>
+<%end%>
+</div>
+</div>

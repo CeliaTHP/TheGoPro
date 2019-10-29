@@ -1,0 +1,2 @@
+class CreateGossipMetum < ApplicationRecord
+end
